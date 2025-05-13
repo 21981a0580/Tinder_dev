@@ -3,6 +3,7 @@ const mongoose=require("mongoose");
 const userSchema = new mongoose.Schema({
    firstName:{
     type:String,
+    required:true
    },
    lastName:{
     type:String,
@@ -10,8 +11,9 @@ const userSchema = new mongoose.Schema({
    ,
    emailId:{
     type:String,
-   }
-   ,
+     required:true,
+     unique:true,
+     } ,
    password:{
     type:String,
    }
@@ -22,7 +24,11 @@ const userSchema = new mongoose.Schema({
    gender:{
     type:String,
    },
-})
+},
+{
+   timestamps:true
+}
+)
 
 
-module.exports=mongoose.model("user",userSchema);;
+module.exports=mongoose.model("User",userSchema);
